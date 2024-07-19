@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://cgx77dxwqkpgv"]
+[gd_scene load_steps=3 format=3 uid="uid://cgx77dxwqkpgv"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu_script.gd" id="1_yj0jo"]
+[ext_resource type="PackedScene" uid="uid://cn5uyx74c6b3w" path="res://Scenes/main.tscn" id="2_a6htu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yj0jo")
+level = ExtResource("2_a6htu")
 
 [node name="BgRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -50,7 +55,7 @@ vertical_alignment = 1
 
 [node name="BtnBox" type="VBoxContainer" parent="MarginContainer/MenuContainer"]
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 6
 
 [node name="StartGameBtn" type="Button" parent="MarginContainer/MenuContainer/BtnBox"]
 layout_mode = 2
@@ -94,3 +99,6 @@ focus_next = NodePath("../StartGameBtn")
 focus_previous = NodePath("../CreditsBtn")
 text = "QuitGame
 "
+
+[connection signal="pressed" from="MarginContainer/MenuContainer/BtnBox/StartGameBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuContainer/BtnBox/QuitGameBtn" to="." method="_on_quit_btn_pressed"]
