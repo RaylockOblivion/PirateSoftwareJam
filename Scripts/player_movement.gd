@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var just_jumped = false
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray_cast : RayCast2D = $RayCast2D
+@onready var ray_one : RayCast2D = $RayOne
+@onready var ray_two : RayCast2D = $RayTwo
+@onready var ray_three : RayCast2D = $RayThree
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -58,12 +59,26 @@ func is_light_detected() -> bool:
 	for node in light_points:
 		distance = self.position.distance_to(node.position)
 		if distance < node.texture.get_width() * node.texture_scale / 2:
-			ray_cast.target_position = node.position - ray_cast.global_position
-			ray_cast.force_raycast_update()
-			var collider = ray_cast.get_collider()
+			ray_one.target_position = node.position - ray_one.global_position
+			ray_two.target_position = node.position - ray_two.global_position
+			ray_three.target_position = node.position - ray_three.global_position
+			ray_one.force_raycast_update()
+			ray_two.force_raycast_update()
+			ray_three.force_raycast_update()
+			var collider = ray_one.get_collider()
+			var collider_two = ray_one.get_collider()
+			var collider_three = ray_one.get_collider()
 			if collider is Node:
 				if collider.is_in_group("light_obstacle"):
 					return false
+			if collider_two is Node:
+				if collider_two.is_in_group("light_obstacle"):
+					return false
+			if collider_three is Node:
+				if collider_three.is_in_group("light_obstacle"):
+					return false
 			return true
-	ray_cast.target_position = Vector2(0, 50)
+	ray_one.target_position = Vector2(0, 50)
+	ray_two.target_position = Vector2(0, 50)
+	ray_three.target_position = Vector2(0, 50)
 	return false
