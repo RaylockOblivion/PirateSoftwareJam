@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://637gyjul86s3"]
+
+[ext_resource type="Texture2D" uid="uid://dlkni8avg6utp" path="res://Assets/light_map.png" id="1_jah32"]
+
+[node name="LightPoint" type="PointLight2D" groups=["light_point"]]
+shadow_enabled = true
+texture = ExtResource("1_jah32")

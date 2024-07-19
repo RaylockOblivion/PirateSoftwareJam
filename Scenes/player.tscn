@@ -127,3 +127,11 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_ca78i")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -34)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, -34)
