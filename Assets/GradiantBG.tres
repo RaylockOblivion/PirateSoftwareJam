@@ -1,0 +1,10 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://k85ra5elukaj"]
+
+[sub_resource type="Gradient" id="Gradient_sl3ex"]
+interpolation_mode = 2
+colors = PackedColorArray(0.343478, 0.0263238, 0.643323, 1, 0.556863, 0.2, 0.984314, 1)
+
+[resource]
+gradient = SubResource("Gradient_sl3ex")
+fill_from = Vector2(0.444444, 1)
+fill_to = Vector2(0.457265, 0.521368)

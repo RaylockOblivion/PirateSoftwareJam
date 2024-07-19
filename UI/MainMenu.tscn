@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgx77dxwqkpgv"]
+[gd_scene load_steps=7 format=3 uid="uid://cgx77dxwqkpgv"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_script.gd" id="1_yj0jo"]
 [ext_resource type="PackedScene" uid="uid://cn5uyx74c6b3w" path="res://Scenes/main.tscn" id="2_a6htu"]
+[ext_resource type="Texture2D" uid="uid://k85ra5elukaj" path="res://Assets/GradiantBG.tres" id="3_73jhc"]
+[ext_resource type="PackedScene" uid="uid://b8q8e7gytwha8" path="res://UI/TitleScreen.tscn" id="4_qghl6"]
+[ext_resource type="PackedScene" uid="uid://bjledbeerblnq" path="res://UI/SettingsScreen.tscn" id="5_flhes"]
+[ext_resource type="PackedScene" uid="uid://cfkwn7gwo5l8i" path="res://UI/CreditsScreen.tscn" id="6_mvxtl"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,92 +17,33 @@ grow_vertical = 2
 script = ExtResource("1_yj0jo")
 level = ExtResource("2_a6htu")
 
-[node name="BgRect" type="ColorRect" parent="."]
+[node name="BgGradiant" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.556282, 0.198971, 0.983408, 1)
+texture = ExtResource("3_73jhc")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TitleContainer" parent="." instance=ExtResource("4_qghl6")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
 
-[node name="MenuContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-alignment = 1
+[node name="SettingsContainer" parent="." instance=ExtResource("5_flhes")]
+layout_mode = 1
+offset_left = 1152.0
+offset_right = 1152.0
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/MenuContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.992157, 0.780392, 0.313726, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.239216, 0.0156863, 0.521569, 1)
-theme_override_constants/shadow_offset_x = 3
-theme_override_constants/shadow_offset_y = 5
-theme_override_constants/outline_size = 5
-theme_override_constants/shadow_outline_size = 5
-theme_override_font_sizes/font_size = 64
-text = "Insert Title"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CreditsContainer" parent="." instance=ExtResource("6_mvxtl")]
+layout_mode = 1
+offset_left = 1152.0
+offset_right = 1152.0
 
-[node name="BtnBox" type="VBoxContainer" parent="MarginContainer/MenuContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-
-[node name="StartGameBtn" type="Button" parent="MarginContainer/MenuContainer/BtnBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../QuitGameBtn")
-focus_neighbor_bottom = NodePath("../SettingsBtn")
-focus_next = NodePath("../SettingsBtn")
-focus_previous = NodePath("../QuitGameBtn")
-text = "Start Game"
-
-[node name="SettingsBtn" type="Button" parent="MarginContainer/MenuContainer/BtnBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../StartGameBtn")
-focus_neighbor_bottom = NodePath("../CreditsBtn")
-focus_next = NodePath("../CreditsBtn")
-focus_previous = NodePath("../StartGameBtn")
-text = "Settings
-"
-
-[node name="CreditsBtn" type="Button" parent="MarginContainer/MenuContainer/BtnBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../SettingsBtn")
-focus_neighbor_bottom = NodePath("../QuitGameBtn")
-focus_next = NodePath("../QuitGameBtn")
-focus_previous = NodePath("../SettingsBtn")
-text = "Credits
-"
-
-[node name="QuitGameBtn" type="Button" parent="MarginContainer/MenuContainer/BtnBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../CreditsBtn")
-focus_neighbor_bottom = NodePath("../StartGameBtn")
-focus_next = NodePath("../StartGameBtn")
-focus_previous = NodePath("../CreditsBtn")
-text = "QuitGame
-"
-
-[connection signal="pressed" from="MarginContainer/MenuContainer/BtnBox/StartGameBtn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuContainer/BtnBox/QuitGameBtn" to="." method="_on_quit_btn_pressed"]
+[connection signal="credits_pressed" from="TitleContainer" to="." method="_on_credits_pressed"]
+[connection signal="quit_pressed" from="TitleContainer" to="." method="_on_quit_btn_pressed"]
+[connection signal="settings_pressed" from="TitleContainer" to="." method="_on_settings_pressed"]
+[connection signal="start_pressed" from="TitleContainer" to="." method="_on_start_btn_pressed"]
+[connection signal="back_pressed" from="SettingsContainer" to="." method="_on_back_pressed"]
+[connection signal="quit_pressed" from="SettingsContainer" to="." method="_on_quit_btn_pressed"]
+[connection signal="back_pressed" from="CreditsContainer" to="." method="_on_back_pressed"]
+[connection signal="quit_pressed" from="CreditsContainer" to="." method="_on_quit_btn_pressed"]

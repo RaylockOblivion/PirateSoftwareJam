@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8q8e7gytwha8"]
+
+[ext_resource type="Script" path="res://Scripts/title_menu.gd" id="1_6v60m"]
+
+[node name="TitleContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_6v60m")
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.992157, 0.780392, 0.313726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.239216, 0.0156863, 0.521569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 64
+text = "Insert Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BtnBox" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="StartGameBtn" type="Button" parent="MenuContainer/BtnBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../QuitGameBtn")
+focus_neighbor_bottom = NodePath("../SettingsBtn")
+focus_next = NodePath("../SettingsBtn")
+focus_previous = NodePath("../QuitGameBtn")
+text = "Start Game"
+
+[node name="SettingsBtn" type="Button" parent="MenuContainer/BtnBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../StartGameBtn")
+focus_neighbor_bottom = NodePath("../CreditsBtn")
+focus_next = NodePath("../CreditsBtn")
+focus_previous = NodePath("../StartGameBtn")
+text = "Settings
+"
+
+[node name="CreditsBtn" type="Button" parent="MenuContainer/BtnBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../SettingsBtn")
+focus_neighbor_bottom = NodePath("../QuitGameBtn")
+focus_next = NodePath("../QuitGameBtn")
+focus_previous = NodePath("../SettingsBtn")
+text = "Credits
+"
+
+[node name="QuitGameBtn" type="Button" parent="MenuContainer/BtnBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../CreditsBtn")
+focus_neighbor_bottom = NodePath("../StartGameBtn")
+focus_next = NodePath("../StartGameBtn")
+focus_previous = NodePath("../CreditsBtn")
+text = "QuitGame
+"
+
+[connection signal="pressed" from="MenuContainer/BtnBox/StartGameBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/BtnBox/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/BtnBox/CreditsBtn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="MenuContainer/BtnBox/QuitGameBtn" to="." method="_on_quit_btn_pressed"]

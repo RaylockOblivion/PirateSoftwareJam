@@ -1,0 +1,146 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfkwn7gwo5l8i"]
+
+[ext_resource type="Script" path="res://Scripts/credits_menu.gd" id="1_8t0jt"]
+
+[node name="CreditsContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_8t0jt")
+
+[node name="CreditsMargin" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CreditsLabel" type="Label" parent="CreditsMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.992157, 0.780392, 0.313726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.239216, 0.0156863, 0.521569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 45
+text = "Credits
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="GridContainer" parent="CreditsMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+columns = 2
+
+[node name="Label" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Programmer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "RayOblivionLock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Programmer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "ShishuTochi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Writer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "IDC_SAO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Writer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "bakstabr1224"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Artist/Composer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="CreditsMargin/Credits"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "roadhaus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsMargin"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="BtnContainer" type="HBoxContainer" parent="CreditsMargin/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 300
+
+[node name="BackBtn" type="Button" parent="CreditsMargin/MarginContainer/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="QuitBtn" type="Button" parent="CreditsMargin/MarginContainer/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quit"
+
+[connection signal="pressed" from="CreditsMargin/MarginContainer/BtnContainer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="CreditsMargin/MarginContainer/BtnContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
