@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/credits_menu.gd" id="1_8t0jt"]
 
-[node name="CreditsContainer" type="MarginContainer"]
+[node name="CreditsContainer" type="MarginContainer" node_paths=PackedStringArray("start_focus")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +13,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 script = ExtResource("1_8t0jt")
+start_focus = NodePath("CreditsMargin/MarginContainer/BtnContainer/BackBtn")
 
 [node name="CreditsMargin" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -135,12 +136,25 @@ theme_override_constants/separation = 300
 [node name="BackBtn" type="Button" parent="CreditsMargin/MarginContainer/BtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitBtn")
+focus_neighbor_top = NodePath("../QuitBtn")
+focus_neighbor_right = NodePath("../QuitBtn")
+focus_neighbor_bottom = NodePath("../QuitBtn")
+focus_next = NodePath("../QuitBtn")
+focus_previous = NodePath("../QuitBtn")
 text = "Back"
 
 [node name="QuitBtn" type="Button" parent="CreditsMargin/MarginContainer/BtnContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../BackBtn")
+focus_neighbor_top = NodePath("../BackBtn")
+focus_neighbor_right = NodePath("../BackBtn")
+focus_neighbor_bottom = NodePath("../BackBtn")
+focus_next = NodePath("../BackBtn")
+focus_previous = NodePath("../BackBtn")
 text = "Quit"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="CreditsMargin/MarginContainer/BtnContainer/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="CreditsMargin/MarginContainer/BtnContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

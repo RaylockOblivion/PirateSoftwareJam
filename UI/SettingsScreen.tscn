@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/settings_menu.gd" id="1_typqk"]
 
-[node name="SettingsContainer" type="MarginContainer"]
+[node name="SettingsContainer" type="MarginContainer" node_paths=PackedStringArray("start_focus")]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +14,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 script = ExtResource("1_typqk")
+start_focus = NodePath("VBoxContainer/ButtonsContainer/BackBtn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -54,6 +56,12 @@ vertical_alignment = 1
 [node name="Res_DD" type="OptionButton" parent="VBoxContainer/OptionsMargin/OptionsContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_left = NodePath("../../../ButtonsContainer/QuitBtn")
+focus_neighbor_top = NodePath("../../../ButtonsContainer/QuitBtn")
+focus_neighbor_right = NodePath("../SMode_DD")
+focus_neighbor_bottom = NodePath("../SMode_DD")
+focus_next = NodePath("../SMode_DD")
+focus_previous = NodePath("../../../ButtonsContainer/QuitBtn")
 theme_override_font_sizes/font_size = 15
 item_count = 4
 selected = 3
@@ -75,6 +83,12 @@ vertical_alignment = 1
 [node name="SMode_DD" type="OptionButton" parent="VBoxContainer/OptionsMargin/OptionsContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_left = NodePath("../Res_DD")
+focus_neighbor_top = NodePath("../Res_DD")
+focus_neighbor_right = NodePath("../Sound_Slider")
+focus_neighbor_bottom = NodePath("../Sound_Slider")
+focus_next = NodePath("../Sound_Slider")
+focus_previous = NodePath("../Res_DD")
 theme_override_font_sizes/font_size = 15
 item_count = 2
 selected = 0
@@ -101,6 +115,10 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+focus_neighbor_top = NodePath("../SMode_DD")
+focus_neighbor_bottom = NodePath("../Music_Slider")
+focus_next = NodePath("../Music_Slider")
+focus_previous = NodePath("../SMode_DD")
 scrollable = false
 tick_count = 5
 ticks_on_borders = true
@@ -114,6 +132,10 @@ vertical_alignment = 1
 [node name="Music_Slider" type="HSlider" parent="VBoxContainer/OptionsMargin/OptionsContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+focus_neighbor_top = NodePath("../Sound_Slider")
+focus_neighbor_bottom = NodePath("../SFX_Slider")
+focus_next = NodePath("../SFX_Slider")
+focus_previous = NodePath("../Sound_Slider")
 scrollable = false
 tick_count = 5
 ticks_on_borders = true
@@ -127,6 +149,10 @@ vertical_alignment = 1
 [node name="SFX_Slider" type="HSlider" parent="VBoxContainer/OptionsMargin/OptionsContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+focus_neighbor_top = NodePath("../Music_Slider")
+focus_neighbor_bottom = NodePath("../../../ButtonsContainer/BackBtn")
+focus_next = NodePath("../../../ButtonsContainer/BackBtn")
+focus_previous = NodePath("../Music_Slider")
 scrollable = false
 tick_count = 5
 ticks_on_borders = true
@@ -143,6 +169,12 @@ size_flags_horizontal = 3
 [node name="BackBtn" type="Button" parent="VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitBtn")
+focus_neighbor_top = NodePath("../../OptionsMargin/OptionsContainer/SFX_Slider")
+focus_neighbor_right = NodePath("../QuitBtn")
+focus_neighbor_bottom = NodePath("../QuitBtn")
+focus_next = NodePath("../QuitBtn")
+focus_previous = NodePath("../../OptionsMargin/OptionsContainer/SFX_Slider")
 action_mode = 0
 text = "Back"
 
@@ -153,6 +185,12 @@ size_flags_horizontal = 3
 [node name="QuitBtn" type="Button" parent="VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../BackBtn")
+focus_neighbor_top = NodePath("../BackBtn")
+focus_neighbor_right = NodePath("../BackBtn")
+focus_neighbor_bottom = NodePath("../../OptionsMargin/OptionsContainer/Res_DD")
+focus_next = NodePath("../../OptionsMargin/OptionsContainer/Res_DD")
+focus_previous = NodePath("../../OptionsMargin/OptionsContainer/SFX_Slider")
 action_mode = 0
 text = "Quit
 "
@@ -161,5 +199,6 @@ text = "Quit
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/ButtonsContainer/BackBtn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/ButtonsContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

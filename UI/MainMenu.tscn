@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgx77dxwqkpgv"]
+[gd_scene load_steps=8 format=3 uid="uid://cgx77dxwqkpgv"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_script.gd" id="1_yj0jo"]
 [ext_resource type="PackedScene" uid="uid://cn5uyx74c6b3w" path="res://Scenes/main.tscn" id="2_a6htu"]
@@ -6,16 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://b8q8e7gytwha8" path="res://UI/TitleScreen.tscn" id="4_qghl6"]
 [ext_resource type="PackedScene" uid="uid://bjledbeerblnq" path="res://UI/SettingsScreen.tscn" id="5_flhes"]
 [ext_resource type="PackedScene" uid="uid://cfkwn7gwo5l8i" path="res://UI/CreditsScreen.tscn" id="6_mvxtl"]
+[ext_resource type="PackedScene" uid="uid://bmj3vrts4tx42" path="res://UI/PauseScreen.tscn" id="7_kg3cv"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 script = ExtResource("1_yj0jo")
-level = ExtResource("2_a6htu")
+game_scene = ExtResource("2_a6htu")
 
 [node name="BgGradiant" type="TextureRect" parent="."]
 layout_mode = 1
@@ -27,17 +31,24 @@ grow_vertical = 2
 texture = ExtResource("3_73jhc")
 
 [node name="TitleContainer" parent="." instance=ExtResource("4_qghl6")]
+visible = false
 layout_mode = 1
 
 [node name="SettingsContainer" parent="." instance=ExtResource("5_flhes")]
+visible = false
 layout_mode = 1
 offset_left = 1152.0
 offset_right = 1152.0
 
 [node name="CreditsContainer" parent="." instance=ExtResource("6_mvxtl")]
+visible = false
 layout_mode = 1
 offset_left = 1152.0
 offset_right = 1152.0
+
+[node name="PauseContainer" parent="." instance=ExtResource("7_kg3cv")]
+visible = false
+layout_mode = 1
 
 [connection signal="credits_pressed" from="TitleContainer" to="." method="_on_credits_pressed"]
 [connection signal="quit_pressed" from="TitleContainer" to="." method="_on_quit_btn_pressed"]
@@ -47,3 +58,7 @@ offset_right = 1152.0
 [connection signal="quit_pressed" from="SettingsContainer" to="." method="_on_quit_btn_pressed"]
 [connection signal="back_pressed" from="CreditsContainer" to="." method="_on_back_pressed"]
 [connection signal="quit_pressed" from="CreditsContainer" to="." method="_on_quit_btn_pressed"]
+[connection signal="game_paused" from="PauseContainer" to="." method="_on_game_paused"]
+[connection signal="menu_pressed" from="PauseContainer" to="." method="_on_pause_menu_pressed"]
+[connection signal="quit_pressed" from="PauseContainer" to="." method="_on_quit_btn_pressed"]
+[connection signal="settings_pressed" from="PauseContainer" to="." method="_on_settings_pressed"]

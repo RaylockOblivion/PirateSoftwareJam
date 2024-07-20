@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/title_menu.gd" id="1_6v60m"]
 
-[node name="TitleContainer" type="MarginContainer"]
+[node name="TitleContainer" type="MarginContainer" node_paths=PackedStringArray("start_focus")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,6 +13,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 script = ExtResource("1_6v60m")
+start_focus = NodePath("MenuContainer/BtnBox/StartGameBtn")
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -80,6 +81,7 @@ focus_previous = NodePath("../CreditsBtn")
 text = "QuitGame
 "
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="MenuContainer/BtnBox/StartGameBtn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="MenuContainer/BtnBox/SettingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="MenuContainer/BtnBox/CreditsBtn" to="." method="_on_credits_btn_pressed"]

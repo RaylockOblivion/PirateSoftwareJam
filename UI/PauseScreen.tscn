@@ -1,0 +1,86 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmj3vrts4tx42"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_erjkj"]
+
+[node name="PauseContainer" type="MarginContainer" node_paths=PackedStringArray("start_focus")]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_erjkj")
+start_focus = NodePath("VBoxContainer/MarginContainer/BtnContainer/MainMenuBtn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="CreditsLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.992157, 0.780392, 0.313726, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.239216, 0.0156863, 0.521569, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 45
+text = "Paused
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="BtnContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="MainMenuBtn" type="Button" parent="VBoxContainer/MarginContainer/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../QuitBtn")
+focus_neighbor_top = NodePath("../QuitBtn")
+focus_neighbor_right = NodePath("../SettingsBtn")
+focus_neighbor_bottom = NodePath("../SettingsBtn")
+focus_next = NodePath("../SettingsBtn")
+focus_previous = NodePath("../QuitBtn")
+text = "Back to Main Menu"
+
+[node name="SettingsBtn" type="Button" parent="VBoxContainer/MarginContainer/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../MainMenuBtn")
+focus_neighbor_top = NodePath("../MainMenuBtn")
+focus_neighbor_right = NodePath("../QuitBtn")
+focus_neighbor_bottom = NodePath("../QuitBtn")
+focus_next = NodePath("../QuitBtn")
+focus_previous = NodePath("../MainMenuBtn")
+text = "Settings"
+
+[node name="QuitBtn" type="Button" parent="VBoxContainer/MarginContainer/BtnContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../SettingsBtn")
+focus_neighbor_top = NodePath("../SettingsBtn")
+focus_neighbor_right = NodePath("../MainMenuBtn")
+focus_neighbor_bottom = NodePath("../MainMenuBtn")
+focus_next = NodePath("../MainMenuBtn")
+focus_previous = NodePath("../SettingsBtn")
+text = "Quit"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/BtnContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/BtnContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/BtnContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
