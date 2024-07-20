@@ -4,9 +4,11 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var just_jumped = false
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray_one : RayCast2D = $RayOne
-@onready var ray_two : RayCast2D = $RayTwo
-@onready var ray_three : RayCast2D = $RayThree
+
+# Rays used for light detection
+@onready var ray_one : RayCast2D = $RayCasts/RayOne
+@onready var ray_two : RayCast2D = $RayCasts/RayTwo
+@onready var ray_three : RayCast2D = $RayCasts/RayThree
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
