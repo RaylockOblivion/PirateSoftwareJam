@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgx77dxwqkpgv"]
+[gd_scene load_steps=9 format=3 uid="uid://cgx77dxwqkpgv"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu_script.gd" id="1_yj0jo"]
 [ext_resource type="PackedScene" uid="uid://cn5uyx74c6b3w" path="res://Scenes/main.tscn" id="2_a6htu"]
 [ext_resource type="Texture2D" uid="uid://k85ra5elukaj" path="res://Assets/GradiantBG.tres" id="3_73jhc"]
+[ext_resource type="PackedScene" uid="uid://badv43a3aab5s" path="res://UI/Intro.tscn" id="3_m244d"]
 [ext_resource type="PackedScene" uid="uid://b8q8e7gytwha8" path="res://UI/TitleScreen.tscn" id="4_qghl6"]
 [ext_resource type="PackedScene" uid="uid://bjledbeerblnq" path="res://UI/SettingsScreen.tscn" id="5_flhes"]
 [ext_resource type="PackedScene" uid="uid://cfkwn7gwo5l8i" path="res://UI/CreditsScreen.tscn" id="6_mvxtl"]
@@ -10,7 +11,6 @@
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
-z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_yj0jo")
 game_scene = ExtResource("2_a6htu")
+intro = ExtResource("3_m244d")
 
 [node name="BgGradiant" type="TextureRect" parent="."]
 layout_mode = 1

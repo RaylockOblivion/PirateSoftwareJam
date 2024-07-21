@@ -1,6 +1,7 @@
 extends Control
 
 @export var game_scene:PackedScene
+@export var intro:PackedScene
 @onready var tree:SceneTree = get_tree()
 
 @export var transition_time:float = 0.5
@@ -11,6 +12,8 @@ var menu_origin_size:=Vector2.ZERO
 var current_menu
 var menu_stack :=[]
 var game_inst:Node
+var intro_inst:Node
+
 
 @onready var menu_main = $TitleContainer
 @onready var menu_settings = $SettingsContainer
@@ -60,13 +63,26 @@ func get_menu_from_id(id:String)->Control:
 			return menu_main
 
 func _on_start_btn_pressed():
+	intro_inst = intro.instantiate()
+	intro_inst.intro_finished.connect(_on_intro_finished)
+	print(tree)
+	print(tree.root)
+	tree.root.add_child(intro_inst)
+	tree.root.move_child(intro_inst,0)
 	game_inst = game_scene.instantiate()
 	tree.root.add_child(game_inst)
+	tree.root.move_child(game_inst,0)
+	game_inst.hide()
 	bg_gradiant.set_modulate(Color(1,1,1,.5))
 	bg_gradiant.hide()
 	menu_main.hide()
 	menu_pause.in_game=true
 	current_menu=menu_pause
+
+func _on_intro_finished():
+	intro_inst.queue_free()
+	game_inst.show()
+	tree.paused=false
 
 func _on_settings_pressed():
 	print("signal reaching")
@@ -87,6 +103,8 @@ func _on_game_paused(paused):
 func _on_pause_menu_pressed():
 	#Remove the game
 	game_inst.queue_free()
+	if is_instance_valid(intro_inst):
+		intro_inst.queue_free()
 	#Change Alpha of bg back to 1
 	bg_gradiant.set_modulate(Color(1,1,1,1))
 	menu_pause.in_game=false
