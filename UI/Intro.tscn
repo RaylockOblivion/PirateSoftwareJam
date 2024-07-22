@@ -1,0 +1,107 @@
+[gd_scene load_steps=8 format=3 uid="uid://badv43a3aab5s"]
+
+[ext_resource type="Texture2D" uid="uid://dk852tbnytcou" path="res://Assets/Intro/1.png" id="1_7mj23"]
+[ext_resource type="Script" path="res://Scripts/intro.gd" id="1_cx8gf"]
+[ext_resource type="Texture2D" uid="uid://duqq8cfaq0a7g" path="res://Assets/Intro/2.png" id="2_efyhs"]
+[ext_resource type="Texture2D" uid="uid://dhgqxa4v3vm3" path="res://Assets/Intro/3.png" id="3_nwfiu"]
+[ext_resource type="Texture2D" uid="uid://cv21unfuq82mo" path="res://Assets/Intro/4.png" id="4_no7h5"]
+[ext_resource type="Texture2D" uid="uid://b7o6n4hmdy7s0" path="res://Assets/Intro/5.png" id="5_402ww"]
+[ext_resource type="Texture2D" uid="uid://seybldr2khbt" path="res://Assets/Intro/6.png" id="6_8y6i8"]
+
+[node name="Intro" type="Control" node_paths=PackedStringArray("pages")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cx8gf")
+pages = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6")]
+transition_time = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="1" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7mj23")
+expand_mode = 3
+
+[node name="2" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_efyhs")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="3" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nwfiu")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="4" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_no7h5")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="5" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_402ww")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="6" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_8y6i8")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
