@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn5uyx74c6b3w"]
+[gd_scene load_steps=9 format=3 uid="uid://cn5uyx74c6b3w"]
 
 [ext_resource type="PackedScene" uid="uid://cm3ycuhtsay21" path="res://Scenes/player.tscn" id="1_vqbgu"]
 [ext_resource type="Texture2D" uid="uid://c2tnb86opid0b" path="res://Assets/test_background.png" id="1_xg3ln"]
 [ext_resource type="PackedScene" uid="uid://637gyjul86s3" path="res://Scenes/light_point.tscn" id="2_4hjre"]
+[ext_resource type="PackedScene" uid="uid://coesesiqxjloc" path="res://Scenes/enemy.tscn" id="3_kyv7y"]
+[ext_resource type="PackedScene" uid="uid://h4kb8d8og8pd" path="res://Scenes/interest_spot.tscn" id="5_l7psm"]
+[ext_resource type="Script" path="res://Scenes/interest_spot.gd" id="6_y4j5h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_df62s"]
 
@@ -17,7 +20,12 @@ scale = Vector2(9, 5.0625)
 texture = ExtResource("1_xg3ln")
 
 [node name="Player" parent="." instance=ExtResource("1_vqbgu")]
+unique_name_in_owner = true
 position = Vector2(424, 352)
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("interest_spot") instance=ExtResource("3_kyv7y")]
+position = Vector2(568, 288)
+interest_spot = NodePath("../InterestSpotLayer/InterestSpot")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(319, 383)
@@ -47,3 +55,9 @@ occluder = SubResource("OccluderPolygon2D_75qrv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LightObstacleLayer/LightOccluder2D/Area2D"]
 polygon = PackedVector2Array(648, 256, 648, 352, 672, 352, 672, 256)
+
+[node name="InterestSpotLayer" type="Node2D" parent="."]
+
+[node name="InterestSpot" parent="InterestSpotLayer" instance=ExtResource("5_l7psm")]
+position = Vector2(920, 344)
+script = ExtResource("6_y4j5h")
