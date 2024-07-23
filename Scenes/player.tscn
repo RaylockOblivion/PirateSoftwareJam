@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm3ycuhtsay21"]
+[gd_scene load_steps=29 format=3 uid="uid://cm3ycuhtsay21"]
 
 [ext_resource type="Texture2D" uid="uid://dbl3dirks6yq" path="res://Assets/Warrior_Blue.png" id="1_iwqoo"]
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_ryx7s"]
+[ext_resource type="Texture2D" uid="uid://gyt2har7afbr" path="res://Assets/Demo_Sprite_MC_Idle_2-Sheet.png" id="3_w6y7h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdl56"]
 atlas = ExtResource("1_iwqoo")
@@ -30,6 +31,38 @@ region = Rect2(768, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfaq3"]
 atlas = ExtResource("1_iwqoo")
 region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33xsj"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(0, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dw8ul"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(40, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgtlc"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(80, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydr7y"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(120, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4voi"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(160, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owddk"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(200, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miciw"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(240, 0, 40, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et35q"]
+atlas = ExtResource("3_w6y7h")
+region = Rect2(280, 0, 40, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2bymt"]
 atlas = ExtResource("1_iwqoo")
@@ -90,6 +123,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_33xsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dw8ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgtlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydr7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4voi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owddk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miciw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et35q")
+}],
+"loop": true,
+"name": &"PlaceHolder_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2bymt")
 }, {
 "duration": 1.0,
@@ -113,19 +175,27 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca78i"]
-radius = 13.0384
+radius = 27.0
+
+[sub_resource type="ImageTexture" id="ImageTexture_eoy7r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ejimm"]
+texture = SubResource("ImageTexture_eoy7r")
+modulate_color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ryx7s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -32)
+position = Vector2(0, -80)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_yb6yj")
-animation = &"Falling"
-autoplay = "Idle"
+animation = &"PlaceHolder_idle"
+autoplay = "PlaceHolder_idle"
+frame_progress = 0.472616
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
+position = Vector2(0, -28)
 shape = SubResource("CircleShape2D_ca78i")
 
 [node name="RayCasts" type="Node2D" parent="."]
@@ -144,3 +214,42 @@ collide_with_bodies = false
 position = Vector2(0, -11)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = -50.0
+offset_top = -125.0
+offset_right = 50.0
+offset_bottom = -100.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 40.0
+offset_top = -135.0
+offset_right = 80.0
+offset_bottom = -95.0
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -199.0
+offset_right = 50.0
+offset_bottom = -169.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 15
+theme_override_styles/fill = SubResource("StyleBoxTexture_ejimm")
+step = 1.0
+value = 50.0
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="CoyoteTimeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
+[connection signal="timeout" from="CoyoteTimeTimer" to="." method="_on_coyote_time_timer_timeout"]
