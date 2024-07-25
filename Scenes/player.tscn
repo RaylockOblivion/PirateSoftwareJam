@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://cm3ycuhtsay21"]
+[gd_scene load_steps=30 format=3 uid="uid://cm3ycuhtsay21"]
 
 [ext_resource type="Texture2D" uid="uid://dbl3dirks6yq" path="res://Assets/Warrior_Blue.png" id="1_iwqoo"]
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_ryx7s"]
 [ext_resource type="Texture2D" uid="uid://gyt2har7afbr" path="res://Assets/Demo_Sprite_MC_Idle_2-Sheet.png" id="3_w6y7h"]
+[ext_resource type="Script" path="res://Scenes/light_detection_manager.gd" id="4_7fw0q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdl56"]
 atlas = ExtResource("1_iwqoo")
@@ -186,6 +187,23 @@ modulate_color = Color(0.605674, 1.66051e-06, 3.85046e-07, 1)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ryx7s")
 
+[node name="RayCasts" type="Node2D" parent="."]
+
+[node name="Ray_1" type="RayCast2D" parent="RayCasts"]
+position = Vector2(0, -64)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Ray_2" type="RayCast2D" parent="RayCasts"]
+position = Vector2(0, -34)
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Ray_3" type="RayCast2D" parent="RayCasts"]
+position = Vector2(0, -11)
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -80)
 scale = Vector2(4, 4)
@@ -197,23 +215,6 @@ frame_progress = 0.472616
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28)
 shape = SubResource("CircleShape2D_ca78i")
-
-[node name="RayCasts" type="Node2D" parent="."]
-
-[node name="RayOne" type="RayCast2D" parent="RayCasts"]
-position = Vector2(0, -64)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="RayTwo" type="RayCast2D" parent="RayCasts"]
-position = Vector2(0, -34)
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="RayThree" type="RayCast2D" parent="RayCasts"]
-position = Vector2(0, -11)
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Label" type="Label" parent="."]
 offset_left = -50.0
@@ -251,5 +252,9 @@ one_shot = true
 [node name="CoyoteTimeTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="LightDetectionManager" type="Node" parent="."]
+script = ExtResource("4_7fw0q")
+
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="CoyoteTimeTimer" to="." method="_on_coyote_time_timer_timeout"]
+[connection signal="light_detected" from="LightDetectionManager" to="." method="_on_light_detection_manager_light_detected"]

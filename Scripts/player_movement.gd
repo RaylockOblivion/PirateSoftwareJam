@@ -7,10 +7,6 @@ var health:int = 100
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var health_bar = $ProgressBar
 
-# Rays used for light detection
-@onready var ray_one : RayCast2D = $RayCasts/RayOne
-@onready var ray_two : RayCast2D = $RayCasts/RayTwo
-@onready var ray_three : RayCast2D = $RayCasts/RayThree
 @onready var label = $Label
 @onready var color_rect = $ColorRect
 @onready var coyote_time_timer = $CoyoteTimeTimer
@@ -24,10 +20,8 @@ var jumping:bool = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var fake_grav = 1
-var light_points : Array = []
 
 func _ready():
-	light_points = get_light_points()
 	health_bar.value=health
 	#Engine.time_scale=0.25
 
@@ -62,10 +56,6 @@ func _physics_process(delta):
 	if(!is_on_floor()&&!jumping):
 		coyote_time_timer.start()
 
-	if is_light_detected():
-		# Do Something
-		pass
-
 func apply_gravity(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -95,14 +85,6 @@ func jump_release():
 	color_rect.color=Color(1,0,0,1)
 	fake_grav = 1.5
 
-func get_light_points() -> Array:
-	for node in get_parent().get_children():
-		if node.is_in_group("light_layer"):
-			light_points = node.get_children()
-			light_points.pop_front()
-			return light_points
-	return []
-
 func reduce_health(val:int):
 	if(health-val<0):
 		health = 0
@@ -111,38 +93,12 @@ func reduce_health(val:int):
 	health-=val
 	health_bar.value=health
 
-func is_light_detected() -> bool:
-	var distance = 0.0
-	for node in light_points:
-		distance = self.position.distance_to(node.position)
-		if distance < node.texture.get_width() * node.texture_scale / 2:
-			ray_one.target_position = node.position - ray_one.global_position
-			ray_two.target_position = node.position - ray_two.global_position
-			ray_three.target_position = node.position - ray_three.global_position
-			ray_one.force_raycast_update()
-			ray_two.force_raycast_update()
-			ray_three.force_raycast_update()
-			var collider = ray_one.get_collider()
-			var collider_two = ray_one.get_collider()
-			var collider_three = ray_one.get_collider()
-			if collider is Node:
-				if collider.is_in_group("light_obstacle"):
-					return false
-			if collider_two is Node:
-				if collider_two.is_in_group("light_obstacle"):
-					return false
-			if collider_three is Node:
-				if collider_three.is_in_group("light_obstacle"):
-					return false
-			return true
-	ray_one.target_position = Vector2(0, 50)
-	ray_two.target_position = Vector2(0, 50)
-	ray_three.target_position = Vector2(0, 50)
-	return false
-
 func _on_jump_buffer_timer_timeout():
 	jump_buffer = false
 
 func _on_coyote_time_timer_timeout():
 	print("timer started?")
 	was_in_air = false
+
+func _on_light_detection_manager_light_detected(light_intensity):
+	pass
