@@ -12,17 +12,18 @@ enum state{
 	NONE,
 	
 	PASSIVE,
+	PASSIVE_GOOMBA,
 	ALERTED,
 	CURIOUS
 }
 
 var current_state = state.NONE
 
-var x_velocity : float = 0.0
+var x_velocity : float = 0.5
 var target_x : float = 0.0
 
 func _ready():
-	current_state = state.PASSIVE
+	current_state = state.PASSIVE_GOOMBA
 	target_x = randi_range(interest_spot.global_position.x - interest_spot.range, interest_spot.global_position.x + interest_spot.range)
 
 func _physics_process(delta):
@@ -31,6 +32,8 @@ func _physics_process(delta):
 			pass
 		state.PASSIVE:
 			enemy_passive(delta)
+		state.PASSIVE_GOOMBA:
+			enemy_passive_goomba(delta)
 		state.ALERTED:
 			pass
 		state.CURIOUS:
@@ -61,6 +64,16 @@ func enemy_passive(delta):
 			x_velocity = -0.5
 	else:
 		x_velocity = (interest_spot.global_position - self.position).normalized().x
+
+@onready var ray_left : RayCast2D = $RayCasts/Ray_Left
+@onready var ray_right : RayCast2D = $RayCasts/Ray_Right
+func enemy_passive_goomba(delta):
+	if ray_left is Node:
+		if ray_left.get_collider() != null:
+			x_velocity = 0.5
+	if ray_right is Node:
+		if ray_right.get_collider() != null:
+			x_velocity = -0.5
 
 func enemy_alerted():
 	pass

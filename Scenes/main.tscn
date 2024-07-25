@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn5uyx74c6b3w"]
+[gd_scene load_steps=10 format=3 uid="uid://cn5uyx74c6b3w"]
 
 [ext_resource type="PackedScene" uid="uid://cm3ycuhtsay21" path="res://Scenes/player.tscn" id="1_vqbgu"]
 [ext_resource type="Texture2D" uid="uid://c2tnb86opid0b" path="res://Assets/test_background.png" id="1_xg3ln"]
@@ -12,6 +12,9 @@
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_75qrv"]
 polygon = PackedVector2Array(648, 256, 648, 352, 672, 352, 672, 256)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_308t6"]
+size = Vector2(20, 88)
+
 [node name="Main" type="Node2D"]
 
 [node name="TestBackground" type="Sprite2D" parent="."]
@@ -24,7 +27,7 @@ unique_name_in_owner = true
 position = Vector2(424, 352)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("interest_spot") instance=ExtResource("3_kyv7y")]
-position = Vector2(568, 288)
+position = Vector2(835, 313)
 interest_spot = NodePath("../InterestSpotLayer/InterestSpot")
 
 [node name="Ground" type="StaticBody2D" parent="."]
@@ -61,3 +64,19 @@ polygon = PackedVector2Array(648, 256, 648, 352, 672, 352, 672, 256)
 [node name="InterestSpot" parent="InterestSpotLayer" instance=ExtResource("5_l7psm")]
 position = Vector2(920, 344)
 script = ExtResource("6_y4j5h")
+
+[node name="TestWalls" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="TestWalls"]
+position = Vector2(724, 376)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWalls/Area2D"]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_308t6")
+
+[node name="Area2D2" type="Area2D" parent="TestWalls"]
+position = Vector2(1063, 369)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestWalls/Area2D2"]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_308t6")

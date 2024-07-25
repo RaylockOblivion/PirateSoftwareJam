@@ -118,6 +118,17 @@ radius = 13.0384
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_uhvvn")
 
+[node name="RayCasts" type="Node2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Ray_Left" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(-60, 0)
+collide_with_areas = true
+
+[node name="Ray_Right" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(60, 0)
+collide_with_areas = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_yb6yj")
