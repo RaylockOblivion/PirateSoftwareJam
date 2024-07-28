@@ -20,9 +20,10 @@ func _input(event):
 		turn_page((-2 * event.button_index)+3)
 
 func turn_page(offset:int):
-	curr_page=clamp(curr_page+offset,1,7)
+	curr_page=clamp(curr_page+offset,1,pages.size()+1)
+	print(curr_page)
 	var turn=create_tween()
-	if(curr_page==7):
+	if(curr_page==pages.size()+1):
 		changingPage=true
 		hide_page(turn,pages[prev_page-1])
 		turn.tween_callback(func():intro_finished.emit())

@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://badv43a3aab5s"]
+[gd_scene load_steps=16 format=3 uid="uid://badv43a3aab5s"]
 
-[ext_resource type="Texture2D" uid="uid://dk852tbnytcou" path="res://Assets/Intro/1.png" id="1_7mj23"]
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_cx8gf"]
-[ext_resource type="Texture2D" uid="uid://duqq8cfaq0a7g" path="res://Assets/Intro/2.png" id="2_efyhs"]
-[ext_resource type="Texture2D" uid="uid://dhgqxa4v3vm3" path="res://Assets/Intro/3.png" id="3_nwfiu"]
-[ext_resource type="Texture2D" uid="uid://cv21unfuq82mo" path="res://Assets/Intro/4.png" id="4_no7h5"]
-[ext_resource type="Texture2D" uid="uid://b7o6n4hmdy7s0" path="res://Assets/Intro/5.png" id="5_402ww"]
-[ext_resource type="Texture2D" uid="uid://seybldr2khbt" path="res://Assets/Intro/6.png" id="6_8y6i8"]
+[ext_resource type="Texture2D" uid="uid://d1kwldkg6yi60" path="res://Assets/Intro/1.jpg" id="2_0uc8h"]
+[ext_resource type="Texture2D" uid="uid://b2vy3jq2hcnhy" path="res://Assets/Intro/2.jpg" id="3_mgkah"]
+[ext_resource type="Texture2D" uid="uid://bjh1ltodqmudy" path="res://Assets/Intro/3.jpg" id="4_dvco8"]
+[ext_resource type="Texture2D" uid="uid://6vkgjumvb3ha" path="res://Assets/Intro/4.jpg" id="5_hhblb"]
+[ext_resource type="Texture2D" uid="uid://bcwrqpdb6y7g4" path="res://Assets/Intro/5.jpg" id="6_g3jpa"]
+[ext_resource type="Texture2D" uid="uid://nhej821pjxsy" path="res://Assets/Intro/6.jpg" id="7_fmv5g"]
+[ext_resource type="Texture2D" uid="uid://b3uyothjbdbm8" path="res://Assets/Intro/7.jpg" id="8_470fs"]
+[ext_resource type="Texture2D" uid="uid://flbesfmsemuh" path="res://Assets/Intro/8.jpg" id="9_jfn0o"]
+[ext_resource type="Texture2D" uid="uid://pwlvb7f8yaw0" path="res://Assets/Intro/9.jpg" id="10_gh126"]
+[ext_resource type="Texture2D" uid="uid://ca78vdqawai45" path="res://Assets/Intro/10.jpg" id="11_nvnel"]
+[ext_resource type="Texture2D" uid="uid://b8gb02apst4fy" path="res://Assets/Intro/11.jpg" id="12_lvexk"]
+[ext_resource type="Texture2D" uid="uid://cq11x3amvv0n5" path="res://Assets/Intro/12.jpg" id="13_j5uv6"]
+[ext_resource type="Texture2D" uid="uid://rqc1f8nvd6c6" path="res://Assets/Intro/13.jpg" id="14_mk66s"]
+[ext_resource type="Texture2D" uid="uid://cfbphwqumafum" path="res://Assets/Intro/14.jpg" id="15_4w3ob"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("pages")]
 process_mode = 3
@@ -17,8 +25,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx8gf")
-pages = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6")]
-transition_time = 1.0
+pages = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12"), NodePath("13"), NodePath("14")]
+transition_time = 0.1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -38,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7mj23")
+texture = ExtResource("2_0uc8h")
 expand_mode = 3
 
 [node name="2" type="TextureRect" parent="."]
@@ -50,7 +58,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_efyhs")
+texture = ExtResource("3_mgkah")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -63,7 +71,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_nwfiu")
+texture = ExtResource("4_dvco8")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -76,7 +84,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_no7h5")
+texture = ExtResource("5_hhblb")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -89,7 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_402ww")
+texture = ExtResource("6_g3jpa")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -102,6 +110,108 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_8y6i8")
+texture = ExtResource("7_fmv5g")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="7" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_470fs")
+expand_mode = 3
+
+[node name="8" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_jfn0o")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="9" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_gh126")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="10" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_nvnel")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="11" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_lvexk")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="12" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_j5uv6")
+expand_mode = 3
+
+[node name="13" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mk66s")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="14" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_4w3ob")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
