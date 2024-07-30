@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -650.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -650.0
 var just_jumped = false
 var health:int = 100
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_bar = $ProgressBar
+@onready var health_bar = $Debugger/ProgressBar
 
-@onready var label = $Label
-@onready var color_rect = $ColorRect
+@onready var label = $Debugger/Label
+@onready var color_rect = $Debugger/ColorRect
 @onready var coyote_time_timer = $CoyoteTimeTimer
 @onready var jump_buffer_timer = $JumpBufferTimer
 

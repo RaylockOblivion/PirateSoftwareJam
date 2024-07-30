@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://badv43a3aab5s"]
+[gd_scene load_steps=18 format=3 uid="uid://badv43a3aab5s"]
 
 [ext_resource type="Script" path="res://Scripts/intro.gd" id="1_cx8gf"]
 [ext_resource type="Texture2D" uid="uid://d1kwldkg6yi60" path="res://Assets/Intro/1.jpg" id="2_0uc8h"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cq11x3amvv0n5" path="res://Assets/Intro/12.jpg" id="13_j5uv6"]
 [ext_resource type="Texture2D" uid="uid://rqc1f8nvd6c6" path="res://Assets/Intro/13.jpg" id="14_mk66s"]
 [ext_resource type="Texture2D" uid="uid://cfbphwqumafum" path="res://Assets/Intro/14.jpg" id="15_4w3ob"]
+[ext_resource type="Texture2D" uid="uid://3l1ya3stheuc" path="res://Assets/Intro/15.jpg" id="16_vkr6s"]
+[ext_resource type="LabelSettings" uid="uid://dbjqh56ax5wiu" path="res://Assets/Intro/intro_label_settings.tres" id="17_kd04i"]
 
 [node name="Intro" type="Control" node_paths=PackedStringArray("pages")]
 process_mode = 3
@@ -25,10 +27,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cx8gf")
-pages = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12"), NodePath("13"), NodePath("14")]
-transition_time = 0.1
+pages = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4"), NodePath("5"), NodePath("6"), NodePath("7"), NodePath("8"), NodePath("9"), NodePath("10"), NodePath("11"), NodePath("12"), NodePath("13"), NodePath("14"), NodePath("15")]
+dialogs = Array[String](["You asked for me my lord?", "Sir Hurmac, thank you for seeing me, I am sending you to vanquish the Lord of Vampires, \\nwho has been a scourge upon our order for far too long. Will you see to it?", "Understood!", "We’re are approaching the castle", "What are your orders?", "Keep the pursuers at bay! I will confront the vampire. \\n - Yes Sir!", "", "", "It's finally over… When will you foul beasts learn… looks like the battle outside is done", "Turns", "", "", "Laughter*", "Ugh… I was careless, the curse is taking hold me", "My love, by the gods what has happened to you? \\n -I was careless… \\n-I will bring the men home, they will certainly kill you.\\n Find me, I will prepare the cure. Watch out for the patrols!"])
+transition_time = 1.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,3 +219,33 @@ grow_vertical = 2
 texture = ExtResource("15_4w3ob")
 expand_mode = 3
 metadata/_edit_use_anchors_ = true
+
+[node name="15" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_vkr6s")
+expand_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogBox" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -98.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Test dialog"
+label_settings = ExtResource("17_kd04i")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
